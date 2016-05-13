@@ -1,4 +1,4 @@
-/* Stephanie Fay 1121598 */
+/* Stephanie Fay */
 
 #include "code.h"
 #include <string.h>
