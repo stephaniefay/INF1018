@@ -1,3 +1,3 @@
 # Inf1018 - Software Básico
-Professor: Ivan<br>
+Professora: Ana<br>
 Semestre: 2016_1
