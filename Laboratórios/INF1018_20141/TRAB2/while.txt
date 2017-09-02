@@ -1,0 +1,7 @@
+v0 = $1 + $0 	
+while p0	
+v0 = v0 * p0 	
+p0 = p0 - $1 	
+end
+ret
+

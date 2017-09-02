@@ -1,0 +1,48 @@
+1.
+	int b[2]
+Uma vez que cada int tem 4 bytes, um array de int com índice 2 terá 8 bytes.
+
+	short a[2][3]
+O sizeof de um array de dois índices é o índice1xíndice2 multiplicado pela quantidade de bytes de seu tipo (no caso short), sendo assim esse array terá (2*3)*2 = 12 bytes
+
+2. 
+O buraco existe pois, na estrutura, estão armazenados dois int, um short e logo depois um int novamente. Como sabemos, int ocupam 4 bytes, enquanto short ocupa 2 bytes;
+Também sabemos que int não pode iniciar em valores que não são multiplos de quatro, portanto o "buraco" existe por causa do padding.
+
+3.
+	a) 12 bytes
+A primeira variável, um char, ocupa apenas 1 byte.
+Então vem um padding de 3 bytes, pra organizar para o próximo valor, um int, que só pode iniciar em valores multiplos de 4.
+O int ocupará 4 bytes.
+A última varíavel, outro char, virá imediatamente após o int e, finalizando a struct, mais um padding de 3 bytes.
+
+	b) 8 bytes
+Terá a primeira variável, um int, que ocupa 4 bytes e, imediatamente após, um char que ocupa 1 byte. No final terá um padding de 3 bytes, para normalizar (alinhar) a struct.
+
+	c) 8 bytes
+Terá a primeira variável, um int, que ocupa 4 bytes e, em sequência, e sem paddings, os dois char que ocupam 1 byte cada, no final um padding de 2 bytes para normalizar a struct.
+
+	d) 12 bytes
+Essa struct está organizada quase da mesma maneira.
+Ela mantém a organização da x2 (uma vez que está printando ela) e, assim, possui um int, que ocupa 4 bytes, seguido de um char, ocupando apenas um byte.
+Daí temos um padding, pois a x2 ainda é uma struct e, assim tem que se alinhar.
+E, no final, em sequência, um char ocupando 1 byte, seguido de um padding e 3 bytes para normalizar.
+
+	e) 3 bytes
+Essa struct possui apenas 3 bytes, um para cada char.
+
+	f) 16 bytes
+A struct está alinhada da seguinte maneira; A primeira variável, um short, ocupa 2 bytes. Logo após existe um padding de 2 bytes, para a inicialização de um int. A segunda variável (int) ocupa os 4 bytes após o padding.
+Logo em seguida vem o array de char, que ocupa 3 bytes (um para cada char) e um padding, de 1 byte, para que o short esteja armazenado no local correto, ocupando os 2 bytes seguintes e, no final, mais um padding (2 bytes) para alinhar a struct.
+
+	g) 16 bytes (8 bytes para cada variável)
+O union funciona de maneira diferente. A primeira variável, um int, ocupa 4 bytes, normal. Porém ele tem dois bytes extras em sequência (0xff) e (0x7f) [acredito que seja lixo]. Além destes ainda possui mais 2 bytes vazios para normalização.
+Funciona desta maneira pois o Union armazena as variáveis no tamanho da maior variável que está sendo guardada dentro dela.
+Depois disso temos outra variável, um array de char, que ocupa, cada char 1 byte, totalizando 5 bytes. Em seguida haverá o byte extra (0x7f) [lixo da mesma maneira] e dois bytes vazios, finalizando aquela variável.
+
+	h) 12 bytes (6 bytes para cada variável)
+O mesmo acontece com esta Union. O maior valor é o do array de char, que ocuparia 5 bytes, mais um byte para normalização.
+Assim a primeira variável, um short, ocupa os dois primeiros bytes, seguido de um byte extra (0x40) [lixo] e 3 bytes vazios para normalização.
+A segunda variável possui 5 bytes ocupados pelo array de char, sendo que cada um ocupa apenas uma posição, e 1 byte vazio, para normalização.
+
+
